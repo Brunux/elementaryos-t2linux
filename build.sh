@@ -2,6 +2,8 @@
 
 set -e
 
+export DEBIAN_FRONTEND=noninteractive
+
 # check for root permissions
 if [[ "$(id -u)" != 0 ]]; then
   echo "E: Requires root permissions" > /dev/stderr
@@ -44,7 +46,7 @@ build () {
   # remove old configs and copy over new
   rm -rf config auto
   cp -r "$BASE_DIR"/etc/* .
-  # Make sure conffile specified as arg has correct name
+  # Make sure conf file specified as arg has correct name
   cp -f "$BASE_DIR"/"$CONFIG_FILE" terraform.conf
 
   # copy appcenter list & key

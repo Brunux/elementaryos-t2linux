@@ -24,20 +24,31 @@
 
 ## Building Locally
 
-As elementary OS is built with the Debian version of `live-build`, not the Ubuntu patched version, it's easiest to build an elementary .iso in a Debian VM or container. This prevents messing up your host system too.
+This fork adds the [T2 Linux kernel](https://github.com/t2linux/T2-Debian-and-Ubuntu-Kernel) build for Debian/Ubuntu.
 
-The following example assumes you have Docker correctly installed and set up, and that your current working directory is this repo. When done, your image will be in the `builds` folder.
+Usage:
 
-Configure the channel (stable, daily) in the configuration file (`etc/terraform-amd64.conf` or `etc/terraform-arm64.conf` based on your host architecture), then run:
+Update your target build file e.g. etc/terraform-amd64.conf with the version of kernel you like to build.
 
 ```sh
-docker run --rm --privileged -it \
-    -v /proc:/proc \
-    -v ${PWD}:/working_dir \
-    -w /working_dir \
-    debian:latest \
-    ./build.sh
+KERNEL="linux-t2"
+KERNEL_HEADERS="linux-headers-t2"
 ```
+
+Then run:
+
+```sh
+ocker run --rm --privileged -it \
+  -e DEBIAN_FRONTEND=noninteractive \
+  -v "$PWD":/working_dir \
+  -w /working_dir \
+  --tmpfs /run:exec,nosuid,size=512m \
+  --tmpfs /tmp:exec,nosuid,size=1g \
+  debian:latest \
+  ./build.sh etc/terraform-amd64.conf
+```
+
+Find the build iso int the `builds` directory.
 
 ## Further Information
 
