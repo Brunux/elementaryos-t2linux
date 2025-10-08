@@ -4,3 +4,6 @@ elementary-minimal
 elementary-standard
 
 @KERNEL
+
+# Manual kernel handling
+initramfs-tools

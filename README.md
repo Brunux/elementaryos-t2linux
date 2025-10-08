@@ -1,21 +1,7 @@
 <div align="center">
-  <a href="https://elementary.io" align="center">
-    <center align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/elementary/brand/main/logomark-white.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/elementary/brand/main/logomark-black.png">
-  <img src="https://raw.githubusercontent.com/elementary/brand/main/logomark-black.png" alt="elementary" align="center" height="200">
-</picture>
-    </center>
-  </a>
-  <br>
   <h1 align="center"><center>elementary OS</center></h1>
   <h3 align="center"><center>Build scripts for image creation</center></h3>
-  <br>
-  <br>
 </div>
-
----
 
 ## Building Locally
 

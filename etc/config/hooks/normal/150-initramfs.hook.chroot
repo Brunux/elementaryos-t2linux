@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eux
+command -v update-initramfs >/dev/null 2>&1 || {
+  apt-get update
+  apt-get install -y initramfs-tools
+}
+KVER="$(cd /boot && ls -1 vmlinuz-* | sed 's#^vmlinuz-##' | sort -V | tail -n1)"
+[ -n "$KVER" ]
+[ -f "/boot/initrd.img-$KVER" ] || update-initramfs -c -k "$KVER"
+test -f "/boot/initrd.img-$KVER"

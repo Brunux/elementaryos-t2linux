@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+KERN="$(ls -1 chroot/boot/vmlinuz-* | sort -V | tail -n1)"
+INITRD="$(echo "$KERN" | sed 's#chroot/boot/vmlinuz-#chroot/boot/initrd.img-#')"
+[ -f "$KERN" ] && [ -f "$INITRD" ] || { echo "Missing kernel or initrd"; exit 1; }
+mkdir -p binary/live binary/boot
+cp -v "$KERN"   binary/live/vmlinuz
+cp -v "$INITRD" binary/live/initrd.img
+ln -sf ../live/vmlinuz    binary/boot/vmlinuz
+ln -sf ../live/initrd.img binary/boot/initrd.img
