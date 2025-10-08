@@ -38,7 +38,7 @@ KERNEL_HEADERS="linux-headers-t2"
 Then run:
 
 ```sh
-ocker run --rm --privileged -it \
+docker run --rm --privileged -it \
   -e DEBIAN_FRONTEND=noninteractive \
   -v "$PWD":/working_dir \
   -w /working_dir \

@@ -4,4 +4,4 @@ elementary-minimal
 elementary-standard
 
 @KERNEL
-@KERNEL_HEADERS
+@HEADERS

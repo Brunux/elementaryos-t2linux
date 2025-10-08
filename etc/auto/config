@@ -62,4 +62,4 @@ sed -i "s/@DATE/$DATE/" config/includes.binary/.disk/info
 
 # T2 Linux
 sed -i "s/@KERNEL/$KERNEL/" config/package-lists/desktop.list.chroot_install
-sed -i "s/@KERNEL_HEADERS/$KERNEL_HEADERS/" config/package-lists/desktop.list.chroot_install
+sed -i "s/@HEADERS/$HEADERS/" config/package-lists/desktop.list.chroot_install
