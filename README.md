@@ -15,27 +15,20 @@
   <br>
 </div>
 
-<p align="center">
-  <img src="https://github.com/elementary/os/actions/workflows/stable-8.0.yml/badge.svg" alt="Stable 8.0">
-  <img src="https://github.com/elementary/os/actions/workflows/daily-8.0.yml/badge.svg" alt="Daily 8.0">
-</p>
-
 ---
 
 ## Building Locally
 
 This fork adds the [T2 Linux kernel](https://github.com/t2linux/T2-Debian-and-Ubuntu-Kernel) build for Debian/Ubuntu.
 
-Usage:
+Choose your build file:
 
-Update your target build file e.g. etc/terraform-amd64.conf with the version of kernel you like to build.
+`etc/terraform-amd64-t2.conf`
+`etc/terraform-amd64-t2-lts.conf`
+`etc/terraform-amd64-t2-xanmod.conf`
+`etc/terraform-amd64-t2-xanmod-lts.conf`
 
-```sh
-KERNEL="linux-t2"
-KERNEL_HEADERS="linux-headers-t2"
-```
-
-Then run:
+The pass it to build:
 
 ```sh
 docker run --rm --privileged -it \
@@ -45,10 +38,12 @@ docker run --rm --privileged -it \
   --tmpfs /run:exec,nosuid,size=512m \
   --tmpfs /tmp:exec,nosuid,size=1g \
   debian:latest \
-  ./build.sh etc/terraform-amd64.conf
+  ./build.sh etc/terraform-amd64-t2.conf
 ```
 
 Find the build iso int the `builds` directory.
+
+NOTE: There are issue building from macos better use a virtual machine or native Debian install.
 
 ## Further Information
 
