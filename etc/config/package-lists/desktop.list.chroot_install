@@ -5,3 +5,4 @@ elementary-standard
 
 # T2 kernel
 @KERNEL
+initramfs-tools

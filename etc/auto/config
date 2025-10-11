@@ -23,8 +23,7 @@ lb config noauto \
     --parent-distribution "$BASECODENAME" \
     --archive-areas "main restricted universe multiverse" \
     --parent-archive-areas "main restricted universe multiverse" \
-    --linux-packages linux-image \
-    --linux-flavours "$KERNEL" \
+    --linux-packages none \
     --bootappend-live "boot=casper maybe-ubiquity quiet splash" \
     --debootstrap-options="--extractor=ar --keyring=/etc/apt/trusted.gpg" \
     --checksums md5 \
