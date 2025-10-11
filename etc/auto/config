@@ -18,10 +18,13 @@ esac
 lb config noauto \
     --architectures "$ARCH" \
     --mode debian \
+    --initramfs none \
     --distribution "$BASECODENAME" \
     --parent-distribution "$BASECODENAME" \
     --archive-areas "main restricted universe multiverse" \
     --parent-archive-areas "main restricted universe multiverse" \
+    --linux-packages linux-image \
+    --linux-flavours "$KERNEL" \
     --bootappend-live "boot=casper maybe-ubiquity quiet splash" \
     --debootstrap-options="--extractor=ar --keyring=/etc/apt/trusted.gpg" \
     --checksums md5 \

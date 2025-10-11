@@ -5,7 +5,3 @@ elementary-standard
 
 # T2 kernel
 @KERNEL
-
-# Build tools
-initramfs-tools
-linux-firmware
