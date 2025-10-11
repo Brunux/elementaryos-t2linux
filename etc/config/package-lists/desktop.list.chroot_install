@@ -3,4 +3,9 @@ elementary-desktop
 elementary-minimal
 elementary-standard
 
+# T2 kernel
 @KERNEL
+
+# Build tools
+initramfs-tools
+linux-firmware
