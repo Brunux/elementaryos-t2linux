@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eux
+# make sure tools are present (harmless if already installed)
+apt-get update
+apt-get install -y --no-install-recommends initramfs-tools linux-firmware
+
+# build initramfs for all installed kernels
+update-initramfs -c -k all || update-initramfs -u -k all
+ls -l /boot/initrd.img-* || true

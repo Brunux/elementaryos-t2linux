@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eux
+mkdir -p binary/boot
+
+# copy kernel(s)
+cp -a chroot/boot/vmlinuz-* binary/boot/
+
+# copy initrd(s) if present
+if ls chroot/boot/initrd.img-* >/dev/null 2>&1; then
+  cp -a chroot/boot/initrd.img-* binary/boot/
+fi
+
+# convenience symlinks expected by some stages
+K="$(basename "$(ls -1 binary/boot/vmlinuz-* | head -n1)")"
+ln -sf "$K" binary/boot/vmlinuz || true
+if ls binary/boot/initrd.img-* >/dev/null 2>&1; then
+  I="$(basename "$(ls -1 binary/boot/initrd.img-* | head -n1)")"
+  ln -sf "$I" binary/boot/initrd.img || true
+fi
+
+ls -l binary/boot
